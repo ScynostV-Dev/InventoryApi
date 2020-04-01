@@ -73,4 +73,11 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/ChiAkuma/InventoryApi</url>
+        </repository>
+    </distributionManagement>
 </project>
