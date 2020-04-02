@@ -63,6 +63,12 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+
+
+        <repository>
+            <id>gitlab-maven</id>
+            <url>https://gitlab.com/api/v4/groups/PolygonDev/-/packages/maven</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -74,10 +80,19 @@
         </dependency>
     </dependencies>
 
+    <!--
     <distributionManagement>
         <repository>
             <id>github</id>
             <url>https://maven.pkg.github.com/ChiAkuma/InventoryApi</url>
+        </repository>
+    </distributionManagement>
+    -->
+
+    <distributionManagement>
+        <repository>
+            <id>gitlab-maven</id>
+            <url>https://gitlab.com/api/v4/projects/InventoryApi/packages/maven</url>
         </repository>
     </distributionManagement>
 </project>
