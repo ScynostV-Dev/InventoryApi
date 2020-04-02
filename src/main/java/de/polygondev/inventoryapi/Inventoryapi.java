@@ -1,25 +1,16 @@
 package de.polygondev.inventoryapi;
 
-import de.polygondev.inventoryapi.inventory.Inventory;
 import de.polygondev.inventoryapi.inventory.InventoryRegister;
-import org.bukkit.Bukkit;
+import de.polygondev.inventoryapi.inventory.Listener_InventoryClickEvent;
+import de.polygondev.inventoryapi.inventory.Listener_InventoryCloseEvent;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.logging.Logger;
 
 public final class Inventoryapi extends JavaPlugin {
 
     public static JavaPlugin PLUGIN;
+    public static InventoryRegister INV_REGISTER = new InventoryRegister();
 
     @Override
     public void onLoad() {
@@ -31,6 +22,8 @@ public final class Inventoryapi extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         this.getLogger().info(ChatColor.GREEN + "InventoryApi is enabled!");
+        this.getServer().getPluginManager().registerEvents(new Listener_InventoryClickEvent(), this);
+        this.getServer().getPluginManager().registerEvents(new Listener_InventoryCloseEvent(), this);
     }
 
     @Override
