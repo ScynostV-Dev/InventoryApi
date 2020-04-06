@@ -1,0 +1,6 @@
+de\polygondev\inventoryapi\InventoryApi.class
+de\polygondev\inventoryapi\inventory\InventoryRegistry.class
+de\polygondev\inventoryapi\inventory\Listener_InventoryCloseEvent.class
+de\polygondev\inventoryapi\inventory\Listener_InventoryClickEvent.class
+de\polygondev\inventoryapi\inventory\Inventory.class
+de\polygondev\inventoryapi\inventory\Executor.class
