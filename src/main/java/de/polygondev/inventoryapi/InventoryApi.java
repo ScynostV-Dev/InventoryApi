@@ -6,7 +6,7 @@ import de.polygondev.inventoryapi.inventory.Listener_InventoryCloseEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Inventoryapi extends JavaPlugin {
+public final class InventoryApi extends JavaPlugin {
 
     public static JavaPlugin PLUGIN;
     public static InventoryRegistry INV_REGISTER = new InventoryRegistry();

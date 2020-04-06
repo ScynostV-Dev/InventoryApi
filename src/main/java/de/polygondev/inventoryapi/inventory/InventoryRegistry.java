@@ -10,6 +10,7 @@ public class InventoryRegistry {
     private HashMap<Player, ArrayList<Inventory>> InvPool = new HashMap<>();
 
     public void addInventoryToPlayer(Player player, Inventory inventory) {
+        inventory.player = player;
 
         if (InvPool.containsKey(player)) {
             ArrayList<Inventory> invlist = InvPool.get(player);
@@ -26,8 +27,10 @@ public class InventoryRegistry {
 
     public void removeInventoryFromPlayer(Player player, String name) {
 
-        if (InvPool.containsKey(player) && checkInventoryFromPlayerExisting(player, name) != (-1)) {
-            
+        int x = checkInventoryFromPlayerExisting(player, name);
+        if (x != (-1)) {
+            ArrayList<Inventory> invlist = InvPool.get(player);
+            invlist.remove(x);
         }
 
     }
@@ -52,15 +55,29 @@ public class InventoryRegistry {
      */
     public int checkInventoryFromPlayerExisting(Player player, String name) {
 
-        ArrayList<Inventory> invlist = InvPool.get(player);
-        for (int i = 0; i < invlist.size(); i++) {
-            Inventory inv = invlist.get(i);
-            if (inv.getName().equals(name)) {
-                return i;
+        if (InvPool.containsKey(player)) {
+            ArrayList<Inventory> invlist = InvPool.get(player);
+            for (int i = 0; i < invlist.size(); i++) {
+                Inventory inv = invlist.get(i);
+                if (inv.getName().equals(name)) {
+                    return i;
+                }
             }
         }
         return (-1);
 
+    }
+
+    Inventory getOpenInventory (Player player) {
+
+        if (InvPool.containsKey(player)) {
+            for (Inventory inv : InvPool.get(player)) {
+                if (inv.isOpen) {
+                    return inv;
+                }
+            }
+        }
+        return null;
     }
 
     public Inventory getInventoryFromPlayer(Player player, String name) {

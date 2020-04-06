@@ -2,6 +2,7 @@ package de.polygondev.testplugin;
 
 import de.polygondev.inventoryapi.inventory.Inventory;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -50,17 +51,22 @@ public class SimpleInventory extends Inventory {
             player.sendMessage("This is Spaaaaarta!!!!!!!!");
         } else if (clickType == ClickType.RIGHT) {
             player.sendMessage("Sei nicht so rechts, EY!");
-            //this.setItem(7, null);
+
+            ItemStack is = new ItemStack(Material.DARK_OAK_WOOD);
+            this.setItem("1:3", is);
         }
     }
 
     @Override
     public void clickEvent(InventoryClickEvent e) {
-
+        if (e.getWhoClicked() instanceof Player) {
+            Player p = (Player) e.getWhoClicked();
+            p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 10, 10);
+        }
     }
 
     @Override
     public void closeEvent(InventoryCloseEvent e) {
-
+        //Inventoryapi.INV_REGISTER.removeInventoryFromPlayer((Player) e.getPlayer(), "Katze");
     }
 }

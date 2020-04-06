@@ -1,7 +1,6 @@
 package de.polygondev.inventoryapi.inventory;
 
-import de.polygondev.inventoryapi.Inventoryapi;
-import org.bukkit.Bukkit;
+import de.polygondev.inventoryapi.InventoryApi;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,7 +14,7 @@ public class Listener_InventoryClickEvent implements Listener {
         if (e.getWhoClicked() instanceof Player) {
             Player p = (Player) e.getWhoClicked();
 
-            Inventory inv = Inventoryapi.INV_REGISTER.getViewedInventory(p);
+            Inventory inv = InventoryApi.INV_REGISTER.getOpenInventory(p);
             if (inv != null) {
                 e.setCancelled(true);
 
@@ -28,6 +27,7 @@ public class Listener_InventoryClickEvent implements Listener {
 
                 }
 
+                inv.clickEvent(e);
             }
 
 

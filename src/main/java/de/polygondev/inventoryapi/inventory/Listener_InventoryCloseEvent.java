@@ -1,6 +1,6 @@
 package de.polygondev.inventoryapi.inventory;
 
-import de.polygondev.inventoryapi.Inventoryapi;
+import de.polygondev.inventoryapi.InventoryApi;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,10 +13,10 @@ public class Listener_InventoryCloseEvent implements Listener {
         if (e.getPlayer() instanceof Player) {
             Player p = (Player) e.getPlayer();
 
-            try {
-                Inventory inv = Inventoryapi.INV_REGISTER.getViewedInventory(p);
+            Inventory inv = InventoryApi.INV_REGISTER.getOpenInventory(p);
+            if (inv != null) {
                 inv.internCloseEvent(e);
-            } catch (NullPointerException e1) {}
+            }
         }
     }
 

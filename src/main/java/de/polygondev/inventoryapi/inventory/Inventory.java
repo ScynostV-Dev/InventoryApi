@@ -1,7 +1,11 @@
 package de.polygondev.inventoryapi.inventory;
 
+import de.polygondev.inventoryapi.InventoryApi;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,15 +15,17 @@ import java.util.ArrayList;
  */
 public abstract class Inventory {
 
+    Player player = null;
     private String title;
     String name;
     private int size, pointer = -1;
     private ArrayList<ItemStack> content = new ArrayList<>();
     private ArrayList<Executor> executors = new ArrayList<>();
+    boolean isOpen = false;
 
     /**
-     *
-     * @param title
+     * Create your Inventory
+     * @param title The title of the Inventory (can have Colors)
      * @param name
      */
     public Inventory(String title, String name) {
@@ -44,6 +50,7 @@ public abstract class Inventory {
 
         calculateSize(pointer++, false);
         setItem(pointer, item);
+        updateInventory();
     }
 
     /**
@@ -72,6 +79,7 @@ public abstract class Inventory {
                 setItem(i, item);
             }
         }
+        updateInventory();
     }
 
     /**
@@ -93,6 +101,7 @@ public abstract class Inventory {
             calculateSize(i, false);
             setItem(i, item);
         }
+        updateInventory();
     }
 
     /**
@@ -119,14 +128,13 @@ public abstract class Inventory {
         }
 
         if (pos < 54) {
-            calculateSize(pos, false);
             content.set(pos, item);
+            calculateSize(content.size(), false);
+            updateInventory();
             return true;
         } else {
             return false;
         }
-
-        //updateInventory();
     }
 
     /**
@@ -147,6 +155,7 @@ public abstract class Inventory {
         if (pos > 0) {
             calculateSize(pos, false);
             setItem(pos, null);
+            updateInventory();
         }
     }
 
@@ -158,6 +167,7 @@ public abstract class Inventory {
             pointer = content.size() -2;
         calculateSize(pointer, true);
         content.remove(content.size() -1);
+        updateInventory();
     }
 
     /**
@@ -176,6 +186,7 @@ public abstract class Inventory {
     public boolean setRows(int rows) {
         if (rows <= 6) {
             this.size = rows * 9;
+            updateInventory();
             return true;
         } else {
             return false;
@@ -193,6 +204,36 @@ public abstract class Inventory {
         }
 
         executors.set(pos, executor);
+    }
+
+    public void openInventory() {
+        if (!this.isOpen) {
+            org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size, this.title);
+
+            InventoryApi.PLUGIN.getServer().broadcastMessage("InventorySize: " + this.size + " ContentSize: " + content.size());
+
+            ItemStack[] iscache = new ItemStack[content.size()];
+            content.toArray(iscache);
+            inv.setContents(iscache);
+            player.openInventory(inv);
+            this.isOpen = true;
+        }
+    }
+
+    public void updateInventory() {
+        if (this.isOpen) {
+            org.bukkit.inventory.Inventory inv = player.getOpenInventory().getTopInventory();
+            InventoryView iV = player.getOpenInventory();
+            if (this.size > inv.getSize()) {
+                player.closeInventory();
+                inv = Bukkit.createInventory(player, this.size, this.title);
+                player.openInventory(inv);
+            }
+            ItemStack[] iscache = new ItemStack[content.size()];
+            content.toArray(iscache);
+            inv.setContents(iscache);
+            player.updateInventory();
+        }
     }
 
     /**
@@ -219,7 +260,7 @@ public abstract class Inventory {
     public abstract void closeEvent(InventoryCloseEvent e);
 
     void internCloseEvent(InventoryCloseEvent e) {
-
+        this.isOpen = false;
         closeEvent(e);
     }
 
