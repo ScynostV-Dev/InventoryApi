@@ -1,16 +1,14 @@
 package de.polygondev.inventoryapi.inventory;
 
-import de.polygondev.inventoryapi.Inventoryapi;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
-
-import javax.annotation.Nullable;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This is the Inventory Class for the whole API
+ */
 public abstract class Inventory {
 
     private String title;
@@ -29,12 +27,16 @@ public abstract class Inventory {
         this.name = name;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     /**
      *
      * @param item
      * @param override
      */
-    public void addItem(ItemStack item, boolean override, @Nullable Executor executor) {
+    public void addItem(ItemStack item, boolean override) {
         if (!override) {
             while (this.pointer + 1 < this.size && pointer + 1 < getMaxLimit() && pointer + 1 < content.size() && content.get(pointer + 1) != null)
                 pointer++;
@@ -206,27 +208,6 @@ public abstract class Inventory {
 
     /**
      *
-     * @param player
-     */
-    public void openInventory(Player player) {
-        org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size);
-
-        ItemStack[] iss = new ItemStack[content.size()];
-        content.toArray(iss);
-
-        inv.setContents(iss);
-
-        Inventoryapi.INV_REGISTER.addViewer(player, this.name);
-
-        player.openInventory(inv);
-    }
-
-    public void updateInventory(Player player){
-        Inventoryapi.INV_REGISTER.getViewedInventory(player);
-    }
-
-    /**
-     *
      * @param e
      */
     public abstract void clickEvent(InventoryClickEvent e);
@@ -238,9 +219,6 @@ public abstract class Inventory {
     public abstract void closeEvent(InventoryCloseEvent e);
 
     void internCloseEvent(InventoryCloseEvent e) {
-        if (e.getPlayer() instanceof Player) {
-            Inventoryapi.INV_REGISTER.removeViewer((Player) e.getPlayer());
-        }
 
         closeEvent(e);
     }

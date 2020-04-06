@@ -1,16 +1,15 @@
 package de.polygondev.inventoryapi;
 
-import de.polygondev.inventoryapi.inventory.InventoryRegister;
+import de.polygondev.inventoryapi.inventory.InventoryRegistry;
 import de.polygondev.inventoryapi.inventory.Listener_InventoryClickEvent;
 import de.polygondev.inventoryapi.inventory.Listener_InventoryCloseEvent;
 import org.bukkit.ChatColor;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Inventoryapi extends JavaPlugin {
 
     public static JavaPlugin PLUGIN;
-    public static InventoryRegister INV_REGISTER = new InventoryRegister();
+    public static InventoryRegistry INV_REGISTER = new InventoryRegistry();
 
     @Override
     public void onLoad() {

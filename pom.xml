@@ -9,7 +9,7 @@
     <version>1.5.0</version>
     <packaging>jar</packaging>
 
-    <name>Inventoryapi</name>
+    <name>InventoryApi</name>
 
     <description>Das ist ein Minecraft Gui Api plugin dingens</description>
     <properties>

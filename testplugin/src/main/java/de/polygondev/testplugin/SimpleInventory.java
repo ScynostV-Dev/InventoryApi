@@ -26,11 +26,11 @@ public class SimpleInventory extends Inventory {
 
 
         for (int i = 0; i < 20; i++) {
-            this.addItem((i%2 == 1) ? is : is1, false, null);
+            this.addItem((i%2 == 1) ? is : is1, false);
         }
 
         for (int i = 0; i < 20; i++) {
-            this.addItem((i%2 == 1) ? is1 : is, true, null);
+            this.addItem((i%2 == 1) ? is1 : is, true);
         }
 
         for (int i = 0; i < 20; i++) {
@@ -38,7 +38,7 @@ public class SimpleInventory extends Inventory {
         }
 
         for (int i = 0; i < 5; i++) {
-            this.addItem(is2, false, null);
+            this.addItem(is2, false);
         }
 
         setExecutor(5, this::thisissparta);
@@ -50,7 +50,7 @@ public class SimpleInventory extends Inventory {
             player.sendMessage("This is Spaaaaarta!!!!!!!!");
         } else if (clickType == ClickType.RIGHT) {
             player.sendMessage("Sei nicht so rechts, EY!");
-            this.setItem(7, null);
+            //this.setItem(7, null);
         }
     }
 
