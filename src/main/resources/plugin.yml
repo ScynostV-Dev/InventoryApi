@@ -1,6 +1,6 @@
-name: Inventoryapi
+name: ${project.name}
 version: ${project.version}
 main: de.polygondev.inventoryapi.InventoryApi
 api-version: 1.13
 authors: [ChiAkuma, WhatzGames]
-description: Das ist ein Minecraft Gui Api plugin dingens
+description: ${project.description}

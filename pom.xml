@@ -6,12 +6,12 @@
 
     <groupId>de.PolygonDev</groupId>
     <artifactId>inventoryapi</artifactId>
-    <version>1.6.0</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>InventoryApi</name>
+    <description>Minecraft Inventory-Gui API for faster generating a Gui element</description>
 
-    <description>Das ist ein Minecraft Gui Api plugin dingens</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

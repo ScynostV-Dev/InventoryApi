@@ -1,6 +1,6 @@
-name: Inventoryapi
-version: 1.6.0
+name: InventoryApi
+version: 1.0.0
 main: de.polygondev.inventoryapi.InventoryApi
 api-version: 1.13
 authors: [ChiAkuma, WhatzGames]
-description: Das ist ein Minecraft Gui Api plugin dingens
+description: Minecraft Inventory-Gui API for faster generating a Gui element
