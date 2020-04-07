@@ -1,5 +1,5 @@
 # InventoryApi
-Inventory Gui Api for Minecraft 1.15.2 (paper)
+Inventory Gui Api for Minecraft 1.15.2 (paper)<br>
 Unser Discord bei Fragen: https://discord.gg/qQd4qGA
 
 ## Erstelle dein eigenes Inventar-Gui für Minecraft!
