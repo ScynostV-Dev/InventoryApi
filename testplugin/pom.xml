@@ -3,12 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>de.PolygonDev</groupId>
     <artifactId>testplugin</artifactId>
     <version>1.0-test</version>
     <packaging>jar</packaging>
-
     <name>Testplugin</name>
 
     <properties>
@@ -74,7 +71,7 @@
         <dependency>
             <groupId>de.PolygonDev</groupId>
             <artifactId>inventoryapi</artifactId>
-            <version>1.6.0</version>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 </project>
