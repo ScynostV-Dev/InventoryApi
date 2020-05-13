@@ -3,4 +3,4 @@ version: 1.0.1
 main: de.polygondev.inventoryapi.InventoryApi
 api-version: 1.13
 authors: [ChiAkuma, WhatzGames]
-description: Minecraft Inventory-Gui API for an easier implementation of GUI elements inside of a players Inventory.
+description: Minecraft Inventory-Gui API an easier implementation of GUI elements inside a players Inventory
