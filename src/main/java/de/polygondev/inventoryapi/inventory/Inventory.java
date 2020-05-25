@@ -206,6 +206,10 @@ public abstract class Inventory {
         executors.set(pos, executor);
     }
 
+    public void setExecutor(String pos, Executor executor){
+        setExecutor(parseItemPosition(pos) ,executor);
+    }
+
     public void openInventory() {
         if (!this.isOpen) {
             org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size, this.title);
