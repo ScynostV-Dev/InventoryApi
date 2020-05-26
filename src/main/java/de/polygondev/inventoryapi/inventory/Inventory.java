@@ -37,6 +37,14 @@ public abstract class Inventory {
         return this.name;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
     /**
      *
      * @param item

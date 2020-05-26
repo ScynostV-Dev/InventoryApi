@@ -10,7 +10,7 @@ public class InventoryRegistry {
     private HashMap<Player, ArrayList<Inventory>> InvPool = new HashMap<>();
 
     public void addInventoryToPlayer(Player player, Inventory inventory) {
-        inventory.player = player;
+        inventory.setPlayer(player);
 
         if (InvPool.containsKey(player)) {
             ArrayList<Inventory> invlist = InvPool.get(player);

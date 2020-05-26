@@ -1,5 +1,5 @@
 name: InventoryApi
-version: 1.0.2
+version: 1.0.4
 main: de.polygondev.inventoryapi.InventoryApi
 api-version: 1.13
 authors: [ChiAkuma, WhatzGames]
