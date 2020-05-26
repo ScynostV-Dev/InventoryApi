@@ -15,13 +15,13 @@ import java.util.ArrayList;
  */
 public abstract class Inventory {
 
-    Player player = null;
+    private Player player = null;
     private String title;
-    String name;
+    private String name;
     private int size, pointer = -1;
     private ArrayList<ItemStack> content = new ArrayList<>();
     private ArrayList<Executor> executors = new ArrayList<>();
-    boolean isOpen = false;
+    private boolean isOpen = false;
 
     /**
      * Create your Inventory
@@ -43,6 +43,10 @@ public abstract class Inventory {
 
     public Player getPlayer() {
         return this.player;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
     }
 
     /**
@@ -222,8 +226,6 @@ public abstract class Inventory {
         if (!this.isOpen) {
             org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size, this.title);
 
-            InventoryApi.PLUGIN.getServer().broadcastMessage("InventorySize: " + this.size + " ContentSize: " + content.size());
-
             ItemStack[] iscache = new ItemStack[content.size()];
             content.toArray(iscache);
             inv.setContents(iscache);
@@ -253,7 +255,7 @@ public abstract class Inventory {
      * @param pos
      * @return
      */
-    Executor getExecutor(int pos){
+    public Executor getExecutor(int pos){
         if(pos < executors.size() && pos >= 0)
             return executors.get(pos);
         return null;
@@ -271,7 +273,11 @@ public abstract class Inventory {
      */
     public abstract void closeEvent(InventoryCloseEvent e);
 
-    void internCloseEvent(InventoryCloseEvent e) {
+    /**
+     * DO NOT NEVER USE THIS!!!!!!!!
+     * @param e
+     */
+    public void internCloseEvent(InventoryCloseEvent e) {
         this.isOpen = false;
         closeEvent(e);
     }

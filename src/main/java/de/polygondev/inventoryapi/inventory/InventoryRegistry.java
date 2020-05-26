@@ -68,11 +68,11 @@ public class InventoryRegistry {
 
     }
 
-    Inventory getOpenInventory(Player player) {
+    public Inventory getOpenInventory(Player player) {
 
         if (InvPool.containsKey(player)) {
             for (Inventory inv : InvPool.get(player)) {
-                if (inv.isOpen) {
+                if (inv.isOpen()) {
                     return inv;
                 }
             }
