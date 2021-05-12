@@ -13,6 +13,7 @@ public class Listener_InventoryClickEvent implements Listener
     @EventHandler
     public void inventoryClickEvent(InventoryClickEvent e)
     {
+        e.setCancelled(true);
         if (e.getWhoClicked() instanceof Player)
         {
             Player p = (Player) e.getWhoClicked();
@@ -20,14 +21,18 @@ public class Listener_InventoryClickEvent implements Listener
             Inventory inv = InventoryApi.INV_REGISTER.getOpenInventory(p);
             if (inv != null)
             {
-                if (e.getSlot() < 0) {
+                /*if (e.getSlot() < 0) {
                     e.setCancelled(true);
                     return;
+                }*/
+
+                if (inv.isAllowPlayerInventory() && e.getClickedInventory() != p.getOpenInventory().getTopInventory()) {
+                    e.setCancelled(false);
                 }
 
-                if (!inv.isAllowPlayerInventory() && e.getClickedInventory() != p.getOpenInventory().getTopInventory()) {
-                    e.setCancelled(true);
-                    return;
+                if (!inv.isSlotProtected(e.getSlot()) 
+                {
+                    e.setCancelled(false);
                 }
 
                 Executor x;
