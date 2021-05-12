@@ -182,6 +182,12 @@ public abstract class Inventory {
         updateInventory();
     }
 
+    public void removeAll() {
+        content.clear();
+        calculateSize(pointer, true);
+        updateInventory();
+    }
+
     /**
      *
      * @return
@@ -220,6 +226,18 @@ public abstract class Inventory {
 
     public void setExecutor(String pos, Executor executor){
         setExecutor(parseItemPosition(pos) ,executor);
+    }
+
+    public void removeExecutor(int pos) {
+        executors.remove(pos);
+    }
+
+    public void removeExecutor(String pos) {
+        removeExecutor(parseItemPosition(pos));
+    }
+
+    public void removeAllExecutors() {
+        executors.clear();
     }
 
     public void openInventory() {
