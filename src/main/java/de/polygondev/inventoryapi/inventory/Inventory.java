@@ -262,7 +262,35 @@ public abstract class Inventory {
     }
 
     public boolean isSlotProtected(int pos) {
-        return protectedSlots.get(pos);
+        if (pos < getMaxLimit())
+        {
+            return protectedSlots.get(pos);
+        }
+        return true;
+    }
+
+    public void setSlotProtection(int pos, boolean protection) {
+        if (pos < getMaxLimit())
+        {
+            protectedSlots.set(pos, protection);
+        }
+    }
+
+    public void setSlotProtection(String pos, boolean protection) {
+        setSlotProtection(parseItemPosition(pos), protection);
+    }
+
+    public void setAreaSlotProtection(int pos1, int pos2, boolean protection) {
+        for (int i = pos1; i <= pos2 && i < getMaxLimit(); i++) {
+            setSlotProtection(i, protection);
+        }
+    }
+
+    public void setAreaSlotProtection(String pos1, String pos2, boolean protection) {
+        int p1 = parseItemPosition(pos1);
+        int p2 = parseItemPosition(pos2);
+
+        setAreaSlotProtection(p1, p2, protection);
     }
 
     public boolean isAllowPlayerInventory() {
