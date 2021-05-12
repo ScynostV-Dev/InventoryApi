@@ -3,7 +3,7 @@ version: 1.0-test
 main: de.polygondev.testplugin.Testplugin
 api-version: 1.13
 depend: [
-    Inventoryapi
+    InventoryApi
 ]
 commands:
   invopen:

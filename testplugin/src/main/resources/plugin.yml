@@ -3,7 +3,7 @@ version: ${project.version}
 main: de.polygondev.testplugin.Testplugin
 api-version: 1.13
 depend: [
-    Inventoryapi
+    InventoryApi
 ]
 commands:
   invopen:
