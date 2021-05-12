@@ -1,13 +1,17 @@
 package de.polygondev.inventoryapi.inventory;
 
 import de.polygondev.inventoryapi.InventoryApi;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
+
+import javax.annotation.Nullable;
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +26,8 @@ public abstract class Inventory {
     private ArrayList<ItemStack> content = new ArrayList<>();
     private ArrayList<Executor> executors = new ArrayList<>();
     private boolean isOpen = false;
+    private ArrayList<Boolean> protectedSlots = new ArrayList<>();
+    private boolean allowPlayerInventory = false;
 
     /**
      * Create your Inventory
@@ -31,6 +37,10 @@ public abstract class Inventory {
     public Inventory(String title, String name) {
         this.title = title;
         this.name = name;
+
+        for (int i = 1; i < (9*6); i++) {
+            protectedSlots.add(false);
+        }
     }
 
     public String getName() {
@@ -240,9 +250,32 @@ public abstract class Inventory {
         executors.clear();
     }
 
+    /**
+     *
+     * @param pos
+     * @return
+     */
+    public Executor getExecutor(int pos){
+        if(pos < executors.size() && pos >= 0)
+            return executors.get(pos);
+        return null;
+    }
+
+    public boolean isSlotProtected(int pos) {
+        return protectedSlots.get(pos);
+    }
+
+    public boolean isAllowPlayerInventory() {
+        return allowPlayerInventory;
+    }
+
+    public void setAllowPlayerInventory(boolean allow) {
+        allowPlayerInventory = allow;
+    }
+
     public void openInventory() {
         if (!this.isOpen) {
-            org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size, this.title);
+            org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size, Component.text(this.title));
 
             ItemStack[] iscache = new ItemStack[content.size()];
             content.toArray(iscache);
@@ -253,30 +286,23 @@ public abstract class Inventory {
     }
 
     public void updateInventory() {
+        boolean resize = false;
         if (this.isOpen) {
             org.bukkit.inventory.Inventory inv = player.getOpenInventory().getTopInventory();
             InventoryView iV = player.getOpenInventory();
-            if (this.size > inv.getSize()) {
+
+            if (this.size != inv.getSize() && this.size % 9 == 0 && this.size != 0) {
                 player.closeInventory();
-                inv = Bukkit.createInventory(player, this.size, this.title);
-                player.openInventory(inv);
+                this.isOpen = false;
+                openInventory();
+                //InventoryApi.INV_REGISTER.updateInventoryForPlayer(player, this.getName(), this);
             }
+
             ItemStack[] iscache = new ItemStack[content.size()];
             content.toArray(iscache);
             inv.setContents(iscache);
             player.updateInventory();
         }
-    }
-
-    /**
-     *
-     * @param pos
-     * @return
-     */
-    public Executor getExecutor(int pos){
-        if(pos < executors.size() && pos >= 0)
-            return executors.get(pos);
-        return null;
     }
 
     /**

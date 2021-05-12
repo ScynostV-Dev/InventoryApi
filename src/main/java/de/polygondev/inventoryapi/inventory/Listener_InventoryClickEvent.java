@@ -7,31 +7,49 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class Listener_InventoryClickEvent implements Listener {
+public class Listener_InventoryClickEvent implements Listener
+{
 
     @EventHandler
-    public void inventoryClickEvent(InventoryClickEvent e) {
-        if (e.getWhoClicked() instanceof Player) {
+    public void inventoryClickEvent(InventoryClickEvent e)
+    {
+        if (e.getWhoClicked() instanceof Player)
+        {
             Player p = (Player) e.getWhoClicked();
 
             Inventory inv = InventoryApi.INV_REGISTER.getOpenInventory(p);
-            if (inv != null) {
-                e.setCancelled(true);
+            if (inv != null)
+            {
+                if (e.getSlot() < 0) {
+                    e.setCancelled(true);
+                    return;
+                }
 
-                if (e.getClick() != ClickType.DOUBLE_CLICK && e.getClick() != ClickType.SHIFT_LEFT) {
+                if (!inv.isAllowPlayerInventory() && e.getClickedInventory() != p.getOpenInventory().getTopInventory()) {
+                    e.setCancelled(true);
+                    return;
+                }
 
-                    Executor x;
-                    if ((x = inv.getExecutor(e.getSlot())) != null) {
-                        x.exec(p, e.getClick());
+                Executor x;
+                if (inv.isSlotProtected(e.getSlot()) | ((x = inv.getExecutor(e.getSlot())) != null))
+                {
+                    e.setCancelled(true);
+                    if (e.getClick() != ClickType.DOUBLE_CLICK && e.getClick() != ClickType.SHIFT_LEFT)
+                    {
+                        if (x != null)
+                        {
+                            x.exec(p, e.getClick());
+                        }
                     }
-
                 }
 
                 inv.clickEvent(e);
             }
 
 
+
         }
+
 
     }
 
