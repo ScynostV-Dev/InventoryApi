@@ -47,6 +47,16 @@ public abstract class Inventory {
         return this.name;
     }
 
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
     public void setPlayer(Player player) {
         this.player = player;
     }
