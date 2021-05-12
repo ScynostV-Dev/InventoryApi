@@ -39,7 +39,7 @@ public abstract class Inventory {
         this.name = name;
 
         for (int i = 1; i < (9*6); i++) {
-            protectedSlots.add(false);
+            protectedSlots.add(true);
         }
     }
 
