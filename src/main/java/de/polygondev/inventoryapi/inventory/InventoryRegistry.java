@@ -80,6 +80,13 @@ public class InventoryRegistry {
         return null;
     }
 
+    public ArrayList<Inventory> getAllInventoriesFromPlayer(Player player) {
+        if (InvPool.containsKey(player)) {
+            return InvPool.get(player);
+        }
+        return null;
+    }
+
     public Inventory getInventoryFromPlayer(Player player, String name) {
 
         if (InvPool.containsKey(player)) {

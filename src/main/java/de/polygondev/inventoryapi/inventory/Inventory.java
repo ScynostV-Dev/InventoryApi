@@ -25,9 +25,16 @@ public abstract class Inventory {
     private int size, pointer = -1;
     private ArrayList<ItemStack> content = new ArrayList<>();
     private ArrayList<Executor> executors = new ArrayList<>();
-    private boolean isOpen = false;
+    private boolean isBukkitOpen = false;
     private ArrayList<Boolean> protectedSlots = new ArrayList<>();
     private boolean allowPlayerInventory = false;
+
+    public boolean isOpen()
+    {
+        return isOpen;
+    }
+
+    private boolean isOpen = false;
 
     /**
      * Create your Inventory
@@ -65,8 +72,8 @@ public abstract class Inventory {
         return this.player;
     }
 
-    public boolean isOpen() {
-        return isOpen;
+    public boolean isBukkitOpen() {
+        return isBukkitOpen;
     }
 
     /**
@@ -312,26 +319,27 @@ public abstract class Inventory {
     }
 
     public void openInventory() {
-        if (!this.isOpen) {
+        if (!this.isBukkitOpen) {
             org.bukkit.inventory.Inventory inv = Bukkit.createInventory(player, this.size, Component.text(this.title));
 
             ItemStack[] iscache = new ItemStack[content.size()];
             content.toArray(iscache);
             inv.setContents(iscache);
             player.openInventory(inv);
+            this.isBukkitOpen = true;
             this.isOpen = true;
         }
     }
 
     public void updateInventory() {
         boolean resize = false;
-        if (this.isOpen) {
+        if (this.isBukkitOpen) {
             org.bukkit.inventory.Inventory inv = player.getOpenInventory().getTopInventory();
             InventoryView iV = player.getOpenInventory();
 
             if (this.size != inv.getSize() && this.size % 9 == 0 && this.size != 0) {
                 player.closeInventory();
-                this.isOpen = false;
+                this.isBukkitOpen = false;
                 openInventory();
                 //InventoryApi.INV_REGISTER.updateInventoryForPlayer(player, this.getName(), this);
             }
@@ -359,7 +367,13 @@ public abstract class Inventory {
      * DO NOT NEVER USE THIS!!!!!!!!
      * @param e
      */
+    public void internBukkitCloseEvent(InventoryCloseEvent e) {
+        this.isBukkitOpen = false;
+        //closeEvent(e);
+    }
+
     public void internCloseEvent(InventoryCloseEvent e) {
+        this.isBukkitOpen = false;
         this.isOpen = false;
         closeEvent(e);
     }

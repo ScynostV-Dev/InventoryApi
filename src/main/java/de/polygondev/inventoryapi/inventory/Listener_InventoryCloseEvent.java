@@ -15,7 +15,11 @@ public class Listener_InventoryCloseEvent implements Listener {
 
             Inventory inv = InventoryApi.INV_REGISTER.getOpenInventory(p);
             if (inv != null) {
-                inv.internCloseEvent(e);
+                if (inv.isOpen() && !e.getReason().equals(InventoryCloseEvent.Reason.PLUGIN)) {
+                    inv.internCloseEvent(e);
+                } else {
+                    inv.internBukkitCloseEvent(e);
+                }
             }
         }
     }
