@@ -1,21 +1,21 @@
 package de.polygondev.testplugin;
 
+import de.polygondev.testplugin.commands.cmd_testplugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Testplugin extends JavaPlugin {
-
-    public static JavaPlugin plugin;
+public final class Testplugin extends JavaPlugin
+{
 
     @Override
-    public void onEnable() {
+    public void onEnable()
+    {
         // Plugin startup logic
-        plugin = this;
-
-        this.getCommand("invopen").setExecutor(new SimpleCommand());
+        this.getCommand("invopen").setExecutor(new cmd_testplugin());
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         // Plugin shutdown logic
     }
 }
