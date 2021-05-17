@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This is the Inventory Class for the whole API
@@ -28,13 +29,37 @@ public abstract class Inventory {
     private boolean isBukkitOpen = false;
     private ArrayList<Boolean> protectedSlots = new ArrayList<>();
     private boolean allowPlayerInventory = false;
+    private boolean isOpen = false;
+    private Object[] lastGrabbed = new Object[3];
+
+    /**
+     * Gets last item that was grabbed when inventory was open...
+     * Not useful if you not explicitly need it
+     * @return
+     */
+    public Object[] getLastGrabbed()
+    {
+        return lastGrabbed;
+    }
+
+    /**
+     * DO NOT USE!!! This is for internal purposes only!!
+     * @param isTopInv
+     * @param slot
+     * @param cursor
+     */
+    public void setLastGrabbed(boolean isTopInv, int slot, ItemStack cursor)
+    {
+        lastGrabbed = new Object[3];
+        lastGrabbed[0] = isTopInv;
+        lastGrabbed[1] = slot;
+        lastGrabbed[2] = cursor;
+    }
 
     public boolean isOpen()
     {
         return isOpen;
     }
-
-    private boolean isOpen = false;
 
     /**
      * Create your Inventory
@@ -397,6 +422,4 @@ public abstract class Inventory {
         Dimension p1 = new Dimension(Integer.parseInt(cache[0]), Integer.parseInt(cache[1]));
         return (p1.width -1) *9 +p1.height -1;
     }
-
-
 }

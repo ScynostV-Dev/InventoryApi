@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Arrays;
+
 public class Listener_InventoryClickEvent implements Listener
 {
 
@@ -30,13 +32,17 @@ public class Listener_InventoryClickEvent implements Listener
     @EventHandler
     public void inventoryClickEvent(InventoryClickEvent e)
     {
+        System.out.println("irgendwas passiert....");
         if (e.getWhoClicked() instanceof Player)
         {
             Player p = (Player) e.getWhoClicked();
+            p.sendMessage("wurde geklickt");
 
             Inventory inv = InventoryApi.INV_REGISTER.getOpenInventory(p);
+            p.sendMessage("inv: " + inv);
             if (inv != null)
             {
+                p.sendMessage("bin drinne");
                 e.setCancelled(true);
                 e.setResult(Event.Result.DENY);
 
