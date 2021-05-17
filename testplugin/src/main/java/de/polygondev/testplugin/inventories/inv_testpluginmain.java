@@ -1,9 +1,12 @@
 package de.polygondev.testplugin.inventories;
 
+import de.polygondev.inventoryapi.InventoryApi;
 import de.polygondev.inventoryapi.inventory.Inventory;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -66,7 +69,6 @@ public class inv_testpluginmain extends Inventory
     {
         if (clickType.isLeftClick())
         {
-            //Todo: hier kommt die logik hin die es speichert und beim close wenn der spieler schließt
             saveItemsInRow(player);
 
             player.sendMessage(ChatColor.GREEN + "Alles zurück auf Anfang!");
@@ -140,20 +142,39 @@ public class inv_testpluginmain extends Inventory
     }
 
     @Override
+    public void openEvent()
+    {
+        //you can add your custom open logic here. please do not override openInventory, because in the background is logic to prevent errors.
+        if (getPage() == 2) {
+            //add items from row into inventory if the inventory is opened and the page is 2
+            //Info: page is set in this plugin not in the api!!
+            this.addItemsFromRow();
+        }
+    }
+
+    @Override
     public void clickEvent(InventoryClickEvent inventoryClickEvent)
     {
-
+        //here you can add sounds or whatever you like
+        Player p = (Player) inventoryClickEvent.getWhoClicked();
+        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 0.3f, 0.2f);
     }
 
     ItemStack[] row = new ItemStack[9];
 
+    /**
+     * showcase close event from this inventory
+     * @param e
+     */
     @Override
-    public void closeEvent(InventoryCloseEvent inventoryCloseEvent)
+    public void closeEvent(InventoryCloseEvent e)
     {
-        //Todo: aufräumen
-        if (!inventoryCloseEvent.getReason().equals(InventoryCloseEvent.Reason.PLUGIN) && getPage() == 2)
+        Player p = (Player) e.getPlayer();
+
+        //saves the items in a list for later pasting into the inventory
+        if (!e.getReason().equals(InventoryCloseEvent.Reason.PLUGIN) && getPage() == 2)
         {
-            saveItemsInRow((Player) inventoryCloseEvent.getPlayer());
+            saveItemsInRow(p);
         }
     }
 }

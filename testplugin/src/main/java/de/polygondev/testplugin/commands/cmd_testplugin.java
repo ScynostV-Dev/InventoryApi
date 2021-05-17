@@ -29,13 +29,10 @@ public class cmd_testplugin implements CommandExecutor
             } else {
                 inv_testpluginmain inv = (inv_testpluginmain) InventoryApi.INV_REGISTER.getInventoryFromPlayer(p, invname);
                 inv.openInventory();
-                if (inv.getPage() == 2) {
-                    inv.addItemsFromRow();
-                }
             }
         }
 
 
-        return false;
+        return true;
     }
 }

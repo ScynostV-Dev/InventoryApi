@@ -8,4 +8,4 @@ depend: [
 commands:
   invopen:
     description: ja so und nu?
-    usage: läuft
+    usage: invopen

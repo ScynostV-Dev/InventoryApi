@@ -9,11 +9,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nullable;
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * This is the Inventory Class for the whole API
@@ -353,6 +350,8 @@ public abstract class Inventory {
             player.openInventory(inv);
             this.isBukkitOpen = true;
             this.isOpen = true;
+
+            Bukkit.getScheduler().scheduleSyncDelayedTask(InventoryApi.PLUGIN, this::openEvent, 0L);
         }
     }
 
@@ -387,6 +386,8 @@ public abstract class Inventory {
      * @param e
      */
     public abstract void closeEvent(InventoryCloseEvent e);
+
+    public abstract void openEvent();
 
     /**
      * DO NOT NEVER USE THIS!!!!!!!!
