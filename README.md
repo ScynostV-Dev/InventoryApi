@@ -4,12 +4,19 @@ Unser Discord bei Fragen: https://discord.gg/qQd4qGA
 
 ## Erstelle dein eigenes Inventar-Gui für Minecraft!
 ## Einfache benutzung der API und Erklärungen
-noch kein Wiki zu verfügung. Bitte auf den Discord kommen dann kann ich es dir erklären ^^
+noch kein Wiki zu verfügung. Bitte auf den Discord kommen dann kann ich es dir erklären ^^<br>
+Es sei denn du verstehst das ***"testplugin"***
 
 ## 1.16.5 Paper (bevorzugt) und Spigot kompaktibel
-Die API ist in Paper geschrieben, allerdings kann man es auch problemlos auf Spigot benutzen.
+Die API ist in Paper geschrieben, allerdings kann man es auch problemlos auf Spigot benutzen.<br><br><br>
+Das sind Bilder vom ***testplugin***:
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37050667/118070044-7e9b1300-b3a5-11eb-9d2e-72dadd5f6a85.png">
+  <img src="https://user-images.githubusercontent.com/37050667/118070100-9a061e00-b3a5-11eb-9a68-f6b394ebb9e4.png">
+  <img src="https://user-images.githubusercontent.com/37050667/118070205-c3bf4500-b3a5-11eb-844c-5a0878531cfe.png">
+</p>
 
-
-Das ist ein Test-Bild:
-![alt text](https://www.survival-sandbox.de/wp-content/uploads/2019/06/2D-Minecraft-Kiste.jpg)
+<!--![grafik](https://user-images.githubusercontent.com/37050667/118070044-7e9b1300-b3a5-11eb-9d2e-72dadd5f6a85.png)
+![grafik](https://user-images.githubusercontent.com/37050667/118070100-9a061e00-b3a5-11eb-9a68-f6b394ebb9e4.png)
+![grafik](https://user-images.githubusercontent.com/37050667/118070205-c3bf4500-b3a5-11eb-844c-5a0878531cfe.png)-->
