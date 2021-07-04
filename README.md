@@ -7,7 +7,7 @@ Unser Discord bei Fragen: https://discord.gg/qQd4qGA
 noch kein Wiki zu verfügung. Bitte auf den Discord kommen dann kann ich es dir erklären ^^<br>
 Es sei denn du verstehst das ***"testplugin"***
 
-## 1.16.5 Paper (bevorzugt) und Spigot kompaktibel
+## 1.17 Paper (bevorzugt) und Spigot kompaktibel
 Die API ist in Paper geschrieben, allerdings kann man es auch problemlos auf Spigot benutzen.<br><br><br>
 Das sind Bilder vom ***testplugin***:
 
