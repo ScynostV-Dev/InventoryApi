@@ -13,7 +13,7 @@
     <description>Minecraft Inventory-Gui API an easier implementation of GUI elements inside a players Inventory</description>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>1.16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
