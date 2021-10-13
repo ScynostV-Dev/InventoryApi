@@ -20,6 +20,8 @@ Es sei denn du verstehst das ***"testplugin"***
     <version>1.1.8</version>
     <scope>provided</scope>
 </dependency>
+
+TODO: Auto download from my plugins so you dont need to give 2 plugins to everyone
 ```
 
 ## 1.17 Paper (bevorzugt) und Spigot kompaktibel
