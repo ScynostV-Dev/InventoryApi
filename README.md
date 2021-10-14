@@ -21,6 +21,19 @@ Es sei denn du verstehst das ***"testplugin"***
     <scope>provided</scope>
 </dependency>
 
+ODER wenn obiges nicht klappt
+
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+    <groupId>com.github.PolygonDev</groupId>
+    <artifactId>InventoryApi</artifactId>
+    <version>Tag</version>
+</dependency>
+
 TODO: Auto download from my plugins so you dont need to give 2 plugins to everyone
 ```
 
