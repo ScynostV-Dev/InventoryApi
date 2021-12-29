@@ -10,6 +10,7 @@ Es sei denn du verstehst das ***"testplugin"***
 
 ## Maven Repository and Dependency
 ```xml
+Maven mit Github Login Token secret dingens ( nicht wirklich geeignet für eine Produktion )
 <repository>
     <id>inventoryApi</id>
     <url>https://raw.github.com/PolygonDev/InventoryApi/repository/</url>
@@ -22,7 +23,7 @@ Es sei denn du verstehst das ***"testplugin"***
     <scope>provided</scope>
 </dependency>
 
-ODER wenn obiges nicht klappt
+Jitpack erlaubt externe maven builds vom github Repository ohne Token secret kram
 
 <repository>
     <id>jitpack.io</id>
