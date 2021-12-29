@@ -1,5 +1,6 @@
 # InventoryApi
 Inventory Gui Api for Minecraft 1.17 (paper)<br>
+Java 16 oder 17<br>
 Unser Discord bei Fragen: https://discord.gg/qQd4qGA
 
 ## Erstelle dein eigenes Inventar-Gui für Minecraft!
