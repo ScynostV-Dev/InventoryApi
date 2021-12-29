@@ -7,7 +7,7 @@ testplugin/target
 *.iml
 *.ipr
 *.iws
-
+.attach*
 # IntelliJ
 out/
 

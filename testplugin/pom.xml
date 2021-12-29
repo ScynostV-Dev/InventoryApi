@@ -10,7 +10,7 @@
     <name>Testplugin</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -72,7 +72,7 @@
         <dependency>
             <groupId>de.PolygonDev</groupId>
             <artifactId>inventoryapi</artifactId>
-            <version>1.1.8</version>
+            <version>1.2.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
