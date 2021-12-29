@@ -17,7 +17,7 @@ Es sei denn du verstehst das ***"testplugin"***
 <dependency>
     <groupId>de.PolygonDev</groupId>
     <artifactId>inventoryapi</artifactId>
-    <version>1.1.8</version>
+    <version>TAG</version>
     <scope>provided</scope>
 </dependency>
 
@@ -31,10 +31,11 @@ ODER wenn obiges nicht klappt
 <dependency>
     <groupId>com.github.PolygonDev</groupId>
     <artifactId>InventoryApi</artifactId>
-    <version>Tag</version>
+    <version>TAG</version>
 </dependency>
 
 TODO: Auto download from my plugins so you dont need to give 2 plugins to everyone
+# NO CHANGES FOR 1.18!
 ```
 
 ## 1.17 Paper (bevorzugt) und Spigot kompaktibel
