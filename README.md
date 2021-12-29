@@ -39,6 +39,10 @@ TODO: Auto download from my plugins so you dont need to give 2 plugins to everyo
 # NO CHANGES FOR 1.18!
 ```
 
+Sollte es irgendwelche probleme mit Jitpack maven geben kannst du hier selbst einen commit / branch builden lassen
+https://jitpack.io/#PolygonDev/InventoryApi
+
+
 ## 1.17 Paper (bevorzugt) und Spigot kompaktibel
 Die API ist in Paper geschrieben, allerdings kann man es auch problemlos auf Spigot benutzen.<br><br><br>
 Das sind Bilder vom ***testplugin***:
