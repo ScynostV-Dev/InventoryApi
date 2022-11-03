@@ -1,7 +1,7 @@
 name: Testplugin
 version: ${project.version}
 main: de.polygondev.testplugin.Testplugin
-api-version: 1.13
+api-version: 1.18
 depend: [
     InventoryApi
 ]

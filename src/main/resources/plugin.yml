@@ -1,6 +1,6 @@
 name: ${project.name}
 version: ${project.version}
 main: de.polygondev.inventoryapi.InventoryApi
-api-version: 1.13
+api-version: 1.18
 authors: [ChiAkuma, WhatzGames]
 description: ${project.description}

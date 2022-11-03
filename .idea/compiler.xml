@@ -11,8 +11,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="InventoryApi" target="16" />
-      <module name="testplugin" target="16" />
+      <module name="InventoryApi" target="18" />
+      <module name="testplugin" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

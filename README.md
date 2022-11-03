@@ -1,6 +1,6 @@
 # InventoryApi
-Inventory Gui Api for Minecraft 1.17 (paper)<br>
-Java 16 oder 17<br>
+Inventory Gui Api for Minecraft 1.19 (paper)<br>
+Java 16 - 18<br>
 Unser Discord bei Fragen: https://discord.gg/qQd4qGA
 
 ## Erstelle dein eigenes Inventar-Gui für Minecraft!
@@ -10,7 +10,8 @@ Es sei denn du verstehst das ***"testplugin"***
 
 ## Maven Repository and Dependency
 ```xml
-Maven mit Github Login Token secret dingens ( nicht wirklich geeignet für eine Produktion )
+<!--Maven mit Github Login Token secret dingens (nicht wirklich geeignet für eine Produktion)-->
+
 <repository>
     <id>inventoryApi</id>
     <url>https://raw.github.com/PolygonDev/InventoryApi/repository/</url>
@@ -23,7 +24,7 @@ Maven mit Github Login Token secret dingens ( nicht wirklich geeignet für eine 
     <scope>provided</scope>
 </dependency>
 
-Jitpack erlaubt externe maven builds vom github Repository ohne Token secret kram
+<!--Jitpack erlaubt externe maven builds vom github Repository ohne Token secret kram-->
 
 <repository>
     <id>jitpack.io</id>
@@ -36,8 +37,8 @@ Jitpack erlaubt externe maven builds vom github Repository ohne Token secret kra
     <version>TAG</version>
 </dependency>
 
-TODO: Auto download from my plugins so you dont need to give 2 plugins to everyone
-# NO CHANGES FOR 1.18!
+<!--TODO: Auto download from my plugins so you dont need to give 2 plugins to everyone
+# NO CHANGES FOR 1.19.x!-->
 ```
 
 Sollte es irgendwelche probleme mit Jitpack maven geben kannst du hier selbst einen commit / branch builden lassen<br>
@@ -45,7 +46,7 @@ Außerdem sollte dort auch stehen welche builds bereits verfügbar sind damit du
 https://jitpack.io/#ScynostV/InventoryApi
 
 
-## 1.17 Paper (bevorzugt) und Spigot kompaktibel
+## 1.19 Paper (bevorzugt) und Spigot kompaktibel
 Die API ist in Paper geschrieben, allerdings kann man es auch problemlos auf Spigot benutzen.<br><br><br>
 Das sind Bilder vom ***testplugin***:
 

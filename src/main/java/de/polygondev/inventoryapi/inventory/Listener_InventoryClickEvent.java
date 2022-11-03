@@ -51,6 +51,7 @@ public class Listener_InventoryClickEvent implements Listener
                 if (ac.equals(InventoryAction.PICKUP_ALL)) cancel = false;
                 if (ac.equals(InventoryAction.PLACE_ALL)) cancel = false;
 
+                if (e.getClickedInventory() != p.getOpenInventory().getTopInventory()) cancel = true;
                 if (inv.isAllowPlayerInventory())
                 {
                     if (ac.equals(InventoryAction.COLLECT_TO_CURSOR)) cancel = false;
@@ -58,10 +59,7 @@ public class Listener_InventoryClickEvent implements Listener
                     if (ac.equals(InventoryAction.SWAP_WITH_CURSOR)) cancel = false;
                     if (ac.equals(InventoryAction.MOVE_TO_OTHER_INVENTORY)) cancel = true;
                 }
-                else
-                {
-                    if (e.getClickedInventory() != p.getOpenInventory().getTopInventory()) cancel = true;
-                }
+
                 if (e.getClickedInventory() == p.getOpenInventory().getTopInventory())
                 {
                     if (inv.isSlotProtected(e.getSlot()) || inv.getExecutor(e.getSlot()) != null) cancel = true;

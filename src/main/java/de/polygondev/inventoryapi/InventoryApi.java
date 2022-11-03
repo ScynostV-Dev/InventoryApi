@@ -19,6 +19,7 @@ public final class InventoryApi extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        PLUGIN = this;
         // Plugin startup logic
         this.getLogger().info(ChatColor.GREEN + "InventoryApi is enabled!");
         this.getServer().getPluginManager().registerEvents(new Listener_InventoryClickEvent(), this);
@@ -27,6 +28,7 @@ public final class InventoryApi extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        PLUGIN = this;
         // Plugin shutdown logic
         this.getServer().getLogger().info(ChatColor.RED + "InventoryApi is disabled!");
     }
