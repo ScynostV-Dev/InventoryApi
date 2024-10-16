@@ -1,5 +1,5 @@
 # InventoryApi
-[![CodeFactor](https://www.codefactor.io/repository/github/scynostv-dev/inventoryapi/badge/master)](https://www.codefactor.io/repository/github/scynostv-dev/inventoryapi/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/scynostv-dev/inventoryapi/badge)](https://www.codefactor.io/repository/github/scynostv-dev/inventoryapi)
 
 Inventory Gui Api for Minecraft 1.19 (paper)<br>
 Java 16 - 18<br>
